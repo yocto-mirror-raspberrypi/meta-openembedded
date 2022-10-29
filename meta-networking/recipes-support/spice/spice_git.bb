@@ -47,7 +47,7 @@ CFLAGS:append = " -Wno-error"
 
 PACKAGECONFIG:class-native = ""
 PACKAGECONFIG:class-nativesdk = ""
-PACKAGECONFIG ?= "sasl"
+PACKAGECONFIG ?= "sasl ${@bb.utils.filter('DISTRO_FEATURES', 'opengl', d)} opus"
 
 PACKAGECONFIG[celt051] = "--enable-celt051,--disable-celt051,celt051"
 PACKAGECONFIG[smartcard] = "--enable-smartcard,--disable-smartcard,libcacard,"
@@ -57,8 +57,6 @@ PACKAGECONFIG[gui] = "--enable-gui,--disable-gui,,"
 PACKAGECONFIG[opus] = "--enable-opus,--disable-opus,libopus,"
 PACKAGECONFIG[opengl] = "--enable-opengl,--disable-opengl,,"
 PACKAGECONFIG[xinerama] = "--enable-xinerama,--disable-xinerama,libxinerama,"
-
-COMPATIBLE_HOST = '(x86_64|i.86|aarch64).*-linux'
 
 BBCLASSEXTEND = "native nativesdk"
 
